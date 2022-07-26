@@ -14,8 +14,8 @@ let precios = [50, 80, 90, 90, 90];
 function imprimirCarrito() {
     let i = 0;
     let items = cursosAInscribirse.length;
-    console.log(cursosAInscribirse);
-    console.log(totalAPagar);
+
+
     carrito = "";
     while (i < items) {
 
@@ -27,7 +27,7 @@ function imprimirCarrito() {
     };
 
     carrito = carrito + "\nTotal a pagar: " + totalAPagar;
-    console.log(carrito);
+
 
 }
 //Agregar al carrito
@@ -41,26 +41,19 @@ function agregarAlCarrito(nroIngresado) {
         case "2":
             cursosAInscribirse.push("2");
             totalAPagar = totalAPagar + precios[nroIngresado - 1];
-            console.log(cursosAInscribirse);
-            console.log(totalAPagar);
             break;
         case "3":
             cursosAInscribirse.push("3");
             totalAPagar = totalAPagar + precios[nroIngresado - 1];
-            console.log(cursosAInscribirse + precios[nroIngresado - 1]);
-            console.log(totalAPagar);
+
             break;
         case "4":
             cursosAInscribirse.push("4");
             totalAPagar = totalAPagar + precios[nroIngresado - 1];
-            console.log(cursosAInscribirse);
-            console.log(totalAPagar);
             break;
         case "5":
             cursosAInscribirse.push("5");
             totalAPagar = totalAPagar + precios[nroIngresado - 1];
-            console.log(cursosAInscribirse);
-            console.log(totalAPagar);
             break;
         default:
             break;
@@ -77,9 +70,15 @@ function quitarDelCarrito(nroIngresado) {
     let arrayAuxiliarCursos = [];
 
     for (let z = 0; z < cursosAInscribirse.length; z++) {
-        if (cursosAInscribirse[z] != nroIngresado && cursoBorrado == 0) {
+
+        if (cursosAInscribirse[z] != nroIngresado) {
             arrayAuxiliarCursos.push(cursosAInscribirse[z]);
 
+        } else if (cursosAInscribirse[z] == nroIngresado && cursoBorrado == 0) {
+            cursoBorrado = 1;
+        }
+        else if (cursosAInscribirse[z] == nroIngresado && cursoBorrado == 1) {
+            arrayAuxiliarCursos.push(cursosAInscribirse[z]);
         }
 
 
@@ -94,7 +93,6 @@ function accionar(nroIngresado, accion) {
 
     if (accion == "a") {
         agregarAlCarrito(nroIngresado);
-        console.log("aca llega antes de romperse");
         imprimirCarrito();
     }
     if (accion == "q") {
@@ -108,16 +106,9 @@ function accionar(nroIngresado, accion) {
 
 // Logica a seguir
 let accion = prompt("Ingrese una accion a realizar:" + menuApp);
-console.log("La accion seleccionada fue:" + accion)
 while (accion != "0" && accion != "1") {
     nroIngresado = prompt("Seleccione un curso (del 1 al 5) \n" + mensajeCursos);
-    console.log("El numero ingresado fue:" + nroIngresado);
-    console.log("entra");
-
     accionar(nroIngresado, accion);
-    console.log("sale");
-
-
     accion = prompt("Ingrese una accion a realizar:" + menuApp + "\n\nSu Carro: \n" + carrito);
 }
 if (accion == "1") {
