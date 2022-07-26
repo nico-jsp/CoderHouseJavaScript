@@ -1,0 +1,324 @@
+@import url("https://fonts.googleapis.com/css2?family=Bungee&family=Noto+Sans:ital,wght@0,100;0,300;0,600;1,100;1,300;1,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&family=Raleway:ital,wght@0,100;0,300;0,600;1,100;1,300;1,600&display=swap");
+
+* {
+    margin: 0;
+    padding: 0%;
+}
+
+body {
+    display: grid;
+    height: 100vh;
+    grid-template-rows: auto 1fr auto;
+}
+
+.logo {
+    width: 50px;
+    top: 5px;
+    left: 10px;
+}
+
+/* MAIN  */
+.main__cover {
+    display: flex;
+    background-size: cover;
+    background-position: center;
+    background-position-y: -100px;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    height: 70vh;
+    min-height: 30vh;
+}
+
+.general_body {
+    display: grid;
+    /* padding-top: 60px; */
+    background-image: url("../assets/img/empty background2.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    padding-bottom: 30px;
+}
+
+.general_body h1,
+.general_body h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-size: 4rem;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    color: #c7f416;
+    text-align: center;
+}
+
+.general_body h3 {
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+.general_body img {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 0px;
+    width: 25rem;
+    border-color: #c7f416;
+}
+
+.general_body p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 2.5rem;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    color: aliceblue;
+    text-align: center;
+}
+
+.general_body a {
+    text-decoration: none;
+    color: #c7f416;
+}
+
+.general_body .main__content {
+    /* padding-top: 10vh; */
+    padding-left: 20vh;
+    padding-right: 20vh;
+}
+
+.imgContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.imgBackground {
+    width: 100%;
+}
+
+.imgContainer h2 {
+    position: absolute;
+    color: white;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 1024px) {
+    .main__cover {
+        display: flex;
+        background-size: contain;
+        background-position: center;
+        background-position-y: -100px;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        height: 40vh;
+        min-height: 30vh;
+    }
+
+    .general_body h1,
+    .general_body h3 {
+        font-size: 3rem;
+    }
+
+    .general_body h3 {
+        font-size: 1.5rem;
+    }
+
+    .general_body p {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 1rem;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 300;
+        color: aliceblue;
+        text-align: center;
+    }
+
+    .general_body img {
+        display: block;
+        margin: auto;
+        width: 20rem;
+        border-color: #c7f416;
+    }
+
+    .general_body main img {
+        display: block;
+        margin: auto;
+        width: 15rem;
+        border-color: #c7f416;
+    }
+
+    .general_body .main__content {
+        padding-left: 1vh;
+        padding-right: 1vh;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .main__cover {
+        display: flex;
+        background-size: contain;
+        background-position-y: 0px;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        height: 35vh;
+        min-height: 30vh;
+    }
+
+    .general_body h1,
+    .general_body h3 {
+        font-size: 3rem;
+    }
+
+    .general_body h3 {
+        font-size: 1.5rem;
+    }
+
+    .general_body p {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 1rem;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 300;
+        color: aliceblue;
+        text-align: center;
+    }
+
+    .general_body img {
+        display: block;
+        margin: auto;
+        width: 20rem;
+        border-color: #c7f416;
+    }
+
+    .general_body main img {
+        display: block;
+        margin: auto;
+        width: 15rem;
+        border-color: #c7f416;
+    }
+
+    .general_body .main__content {
+        padding-left: 1vh;
+        padding-right: 1vh;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .main__cover {
+        display: flex;
+        background-size: contain;
+        background-position-y: 10px;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        height: 15vh;
+        min-height: 15vh;
+    }
+
+    .general_body h1,
+    .general_body h3 {
+        font-size: 3rem;
+    }
+
+    .general_body h3 {
+        font-size: 1.5rem;
+    }
+
+    .general_body p {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 1rem;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 300;
+        color: aliceblue;
+        text-align: center;
+    }
+
+    .general_body img {
+        display: block;
+        margin: auto;
+        width: 20rem;
+        border-color: #c7f416;
+    }
+
+    .general_body main img {
+        display: block;
+        margin: auto;
+        width: 15rem;
+        border-color: #c7f416;
+    }
+
+    .general_body .main__content {
+        padding-left: 1vh;
+        padding-right: 1vh;
+    }
+}
+
+.header ul {
+    list-style: none;
+    display: flex;
+    text-align: end;
+    margin-right: 1rem;
+}
+
+/* WORKSHOPS */
+.workshops__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 50px 25px;
+    column-gap: 1rem;
+    justify-items: center;
+}
+
+.workshop {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding: 30px;
+    width: 35vw;
+}
+
+.workshop ul li {
+    font-family: 'Raleway', cursive;
+    font-weight: 300;
+    display: flex;
+    color: aliceblue;
+    display: list-item;
+    list-style-type: circle;
+}
+
+.workshop a {
+    display: block;
+    height: 1.5rem;
+    text-align: center;
+    font-family: 'Bungee', cursive;
+    background: linear-gradient(to bottom right, #323746, #02030c);
+    color: #c7f416;
+    border-radius: 5px;
+}
+
+/* MEDIA WORKSHOP */
+@media screen and (max-width: 720px) {
+    .workshops__list {
+        grid-template-columns: 1fr;
+    }
+
+    .workshop {
+        width: 100vw;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .workshops__list {
+        /* grid-template-columns: 1fr; */
+        justify-content: normal;
+        padding: 0%;
+    }
+
+    .workshop {
+        width: 100vw;
+    }
+}
