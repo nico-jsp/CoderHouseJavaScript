@@ -5,10 +5,10 @@ let nroIngresado = "";
 
 let cursosAInscribirse = [];
 let totalAPagar = 0;
-let carrito = "";
+let carrito = [];
 let precios = [50, 80, 90, 90, 90];
 
-// Funciones
+// // Funciones
 
 // Armar carrito
 function imprimirCarrito() {
@@ -32,7 +32,7 @@ function imprimirCarrito() {
 }
 //Agregar al carrito
 function agregarAlCarrito(nroIngresado) {
-    let curso = parseInt(nroIngresado);
+
     switch (nroIngresado) {
         case "1":
             cursosAInscribirse.push("1");
@@ -64,26 +64,10 @@ function agregarAlCarrito(nroIngresado) {
 // Quitar del carrito
 function quitarDelCarrito(nroIngresado) {
 
-    let i = 0;
-    let curso = parseInt(nroIngresado);
-    let cursoBorrado = 0;
-    let arrayAuxiliarCursos = [];
+    let posicionCursoABorrar = cursosAInscribirse.indexOf(nroIngresado);
 
-    for (let z = 0; z < cursosAInscribirse.length; z++) {
+    cursosAInscribirse.splice(posicionCursoABorrar, 1);
 
-        if (cursosAInscribirse[z] != nroIngresado) {
-            arrayAuxiliarCursos.push(cursosAInscribirse[z]);
-
-        } else if (cursosAInscribirse[z] == nroIngresado && cursoBorrado == 0) {
-            cursoBorrado = 1;
-        }
-        else if (cursosAInscribirse[z] == nroIngresado && cursoBorrado == 1) {
-            arrayAuxiliarCursos.push(cursosAInscribirse[z]);
-        }
-
-
-    }
-    cursosAInscribirse = arrayAuxiliarCursos;
     totalAPagar = totalAPagar - precios[nroIngresado - 1];
 
 
