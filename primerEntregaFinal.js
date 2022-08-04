@@ -1,5 +1,4 @@
 
-let mensajeCursos = "\n (1) Aspectos psicológicos en el crossfit I - USD 50 \n (2) Aspectos psicológicos en el crossfit II - USD 80 \n (3) Liderazgo en el crossfit - USD 90 \n (4) La comunicación en el box - USD 90 \n (5) PSICO-STRENGTH: Entrenamiento mental para atletas - USD 90";
 let menuApp = " \n a - agregar uno/otro curso \n q - quitar un curso \n 1 para pagar \n 0 para salir:"
 let nroIngresado = "";
 
@@ -85,16 +84,13 @@ function imprimirCurso(i) {
 function listarCursos() {
     let lista = "Cursos:\n";
     let linea = "";
-    const Cursos = listaDeCursos;
-    for (let i = 0; i <= Cursos.length; i++) {
-        linea = imprimirCurso(i);
+    for (const curso of listaDeCursos) {
+        // linea = imprimirCurso(i);
+        linea = curso.id + "- " + curso.titulo + " - USD " + curso.precio;
+
         lista = lista + linea + "\n";
         console.log("aca imprimo la lista " + lista);
-
     }
-    // Esta es la parte que no llega
-    console.log("ACA LLEGA?" + lista);
-    console.log(lista);
     return lista;
 }
 
@@ -154,25 +150,16 @@ function accionar(nroIngresado, accion) {
 
 
 // Logica a seguir
+console.log(listaDeCursos);
+let listado = listarCursos();
 
 let accion = prompt("Ingrese una accion a realizar:" + menuApp);
 while (accion != "0" && accion != "1") {
-    nroIngresado = prompt("Seleccione un curso (del 1 al " + listaDeCursos.length + ") \n" + mensajeCursos);
+    nroIngresado = prompt("Seleccione un curso (del 1 al " + listaDeCursos.length + ") \n" + listado);
     accionar(nroIngresado, accion);
     accion = prompt("Ingrese una accion a realizar:" + menuApp + "\n\nSu Carro: \n" + carrito);
 }
 if (accion == "1") {
     alert("Su carrito es: \n" + carrito + "\n\nMuchas gracias por su compra.")
 }
-///////////////////////////////////////////////
-
-
-
-//////// Esta es la parte del codigo que quise usar para imprimir la lista de cursos, pero no me anda por lo indicado en los comentarios.
-// Mi idea era listar los cursos usando la funcion imprimir, pero cuando termina el For, me tira un error, y no se me imprime la variable, pero por el console log veo los valores
-
-// console.log(listaDeCursos);
-// let listado = listarCursos();
-// alert(listado);
-// console.log("Aca imprimimos el listado completo" + listado)
 
