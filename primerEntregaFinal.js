@@ -72,12 +72,6 @@ var listaDeCursos = [
 
 // Funciones
 
-//Imprimir Curso
-function imprimirCurso(i) {
-    let curso = listaDeCursos[i].id + "- " + listaDeCursos[i].titulo + " - USD " + listaDeCursos[i].precio;
-    return curso;
-}
-
 
 //Imprimir lista de cursos
 
@@ -85,7 +79,6 @@ function listarCursos() {
     let lista = "Cursos:\n";
     let linea = "";
     for (const curso of listaDeCursos) {
-        // linea = imprimirCurso(i);
         linea = curso.id + "- " + curso.titulo + " - USD " + curso.precio;
 
         lista = lista + linea + "\n";
