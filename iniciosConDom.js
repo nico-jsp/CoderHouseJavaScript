@@ -98,8 +98,8 @@ function imprimirCarrito() {
     carrito = "";
     while (i < items) {
 
-        carrito = carrito + "- ";
-        carrito = carrito + " " + cursosAInscribirse[i];
+        carrito = carrito + "* ";
+        carrito = carrito + " " + cursosAInscribirse[i].id + " - " + cursosAInscribirse[i].titulo;
         carrito = carrito + "\n";
         i++;
 
@@ -112,20 +112,34 @@ function imprimirCarrito() {
 //Agregar al carrito
 function agregarAlCarrito(nroIngresado) {
 
-    cursosAInscribirse.push(nroIngresado);
+    // cursosAInscribirse.push(nroIngresado);
+    cursosAInscribirse.push(listaDeCursos[nroIngresado - 1]);
     totalAPagar = totalAPagar + listaDeCursos[nroIngresado - 1].precio;
+    localStorage.setItem("cursosAInscribirse", JSON.stringify(cursosAInscribirse));
+    console.log(localStorage.getItem("cursosAInscribirse"));
+
 }
 
 // Quitar del carrito
 function quitarDelCarrito(nroIngresado) {
 
-    let posicion = cursosAInscribirse.indexOf(nroIngresado);
-    cursosAInscribirse.splice(posicion, 1);
-    totalAPagar = totalAPagar - listaDeCursos[nroIngresado - 1].precio;
+    let posicion = cursosAInscribirse.indexOf(listaDeCursos[nroIngresado - 1]);
+    if (posicion != -1) {
+        cursosAInscribirse.splice(posicion, 1);
+        totalAPagar = totalAPagar - listaDeCursos[nroIngresado - 1].precio;
+        cantidadCarritoWeb -= 1;
+        document.getElementById("carritoWeb").value = cantidadCarritoWeb;
+        localStorage.setItem("cursosAInscribirse", JSON.stringify(cursosAInscribirse));
+        console.log(localStorage.getItem("cursosAInscribirse"));
 
+    } else {
+        alert("El curso que se desea borrar no esta en el carrito");
+    }
 
 
 }
+
+
 
 function accionar(nroIngresado, accion) {
 
@@ -146,30 +160,6 @@ function accionar(nroIngresado, accion) {
 
 let listado = listarCursos();
 
-// let accion = prompt("Ingrese una accion a realizar:" + menuApp);
-// while (accion != "0" && accion != "1") {
-// nroIngresado = prompt("Seleccione un curso (del 1 al " + listaDeCursos.length + ") \n" + listado);
-// accionar(nroIngresado, accion);
-// accion = prompt("Ingrese una accion a realizar:" + menuApp + "\n\nSu Carro: \n" + carrito);
-// }
-// if (accion == "1") {
-// alert("Su carrito es: \n" + carrito + "\n\nMuchas gracias por su compra.")
-// }
-{/* <div class="workshop" data-aos="zoom-out">
-<h3>(2) Aspectos psicológicos en el crossfit II</h3>
-<p>
-    (Taller para todos USD 80)
-</p>
-<ul>
-    <li>1 encuentro</li>
-    <li>4 horas</li>
-    <li>Presencial</li>
-</ul>
-
-<a href="">
-    Comprar
-</a>
-</div> */}
 
 // inicializamos el carrito
 
@@ -179,9 +169,29 @@ document.getElementById("carritoWeb").value = cantidadCarritoWeb;
 
 function verCarrito() {
     imprimirCarrito()
+
+    // let carritoVentana = document.createElement("div");
+    // carritoVentana.innerHTML = `<div id="carrWeb" class="modal">
+    // <div class="modal-content">
+    // ${carrito}
+    // <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    // <span aria-hidden="true">close</span>
+    // </button>
+    // </div>
+    // </div>
+    // `;
+    // document.append(carritoVentana);
+    // carritoVentana.style.display = 'block';
+    // $('#carrWeb').show();
+    // console.log(carritoVentana);
+
+
     alert("Su carrito es: \n" + carrito + "\n\nMuchas gracias por su compra.")
 
 }
+
+
+
 
 function pressButton(i) {
     agregarAlCarrito(i);
@@ -190,10 +200,14 @@ function pressButton(i) {
     cantidadCarritoWeb += 1;
     document.getElementById("carritoWeb").value = cantidadCarritoWeb;
 
-    console.log(document.getElementById("carritoWeb").value);
-    console.log(cantidadCarritoWeb);
-    console.log(carrito)
 };
+
+function removeCurso(i) {
+    quitarDelCarrito(i);
+    imprimirCarrito();
+
+
+}
 
 
 // Lista de Cursos
@@ -219,9 +233,14 @@ for (const curso of listaDeCursos) {
         <button id=boton${curso.id} href="" onclick='pressButton(${curso.id})'>
         Comprar
         </button>
+        <button id=boton${curso.id} href="" onclick='removeCurso(${curso.id})'>
+        Eliminar
+        </button>
+
     `;
 
     cursosListados[0].append(item);
+
 }
 
 
