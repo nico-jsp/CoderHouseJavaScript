@@ -1,0 +1,37 @@
+.header {
+    ul {
+        list-style: none;
+        display: flex;
+        text-align: end;
+        margin-right: 1rem;
+    }
+}
+
+
+/* NAVBAR CUSTOMIZATION /*/
+.navbar {
+    &__custom {
+        background: linear-gradient(to bottom right, rgb(50, 55, 70), rgb(2, 3, 12));
+    }
+
+    &__custom ul {
+        font-family: 'Bungee', cursive;
+        color: map-get($colors , greenACAP);
+    }
+
+    &__custom li {
+        transition: trasnform 3s;
+    }
+
+    &__custom li:hover {
+        transform: scale(1.2);
+    }
+
+    &__custom .header__burguer-menu {
+        display: none;
+    }
+
+    &__custom .header__bar__btn {
+        display: none;
+    }
+}

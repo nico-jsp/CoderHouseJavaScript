@@ -1,0 +1,19 @@
+$colors: (
+    /* Colors for default */
+    greenACAP: #c7f416,
+
+
+);
+
+
+@mixin padding-sides($left, $right) {
+    padding-left: $left;
+    padding-right: $right;
+}
+
+
+
+@mixin padding-updown($up, $down) {
+    padding-top: $up;
+    padding-bottom: $down;
+}

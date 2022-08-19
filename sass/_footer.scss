@@ -1,0 +1,47 @@
+/* FOOTER */
+
+.footer {
+
+    background: linear-gradient(to bottom right, rgb(50, 55, 70), rgb(2, 3, 12));
+    margin-bottom: 0%;
+
+
+
+
+    ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        font-family: 'Bungee', cursive;
+        color: map-get($colors , greenACAP);
+        padding-left: 0;
+
+        li {
+            margin-left: 1rem;
+
+            a {
+                text-decoration: none;
+
+            }
+        }
+
+    }
+
+
+    li {
+        transition: trasnform 3s;
+    }
+
+    li:hover {
+        transform: scale(1.2);
+    }
+
+
+}
+
+.footerNav {
+    @extend .footer;
+    @include padding-updown(20px, 20px);
+    width: 100%;
+}

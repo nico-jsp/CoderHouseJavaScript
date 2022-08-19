@@ -1,0 +1,60 @@
+.contactForm {
+    text-align: center;
+    padding-left: 15vw;
+    padding-right: 15vw;
+
+}
+
+fieldset {
+    padding: 10px;
+    justify-content: center;
+    margin: auto;
+    border-radius: 5px;
+    font-family: 'Bungee', cursive;
+    color: aliceblue;
+
+    fieldset {
+        border-radius: 5px;
+        font-family: 'Raleway';
+        font-weight: 600;
+    }
+
+    .form__button {
+        padding: 5px;
+        font-weight: 600;
+        font-family: 'Bungee', cursive;
+    }
+
+}
+
+/* MEDIA FORM */
+
+@media screen and (max-width: 480px) {
+
+    .contactForm {
+        text-align: left;
+        @include padding-sides(1rem, 1rem);
+
+
+        fieldset {
+            padding: 0px;
+            padding-top: 30px;
+            border: none;
+
+            legend {
+                padding-top: 15px;
+                text-align: center;
+            }
+
+            fieldset {
+
+                legend {
+                    text-align: left;
+                }
+            }
+        }
+
+
+    }
+
+}

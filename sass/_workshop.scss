@@ -1,0 +1,189 @@
+/* WORKSHOPS */
+.workshops__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 50px 25px;
+    column-gap: 1rem;
+    justify-items: center;
+}
+
+.workshop {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    @include padding-sides(10px, 10px);
+    padding: 30px;
+    width: 35vw;
+
+    ul li {
+        font-family: 'Raleway', cursive;
+        font-weight: 300;
+        display: flex;
+        color: aliceblue;
+        display: list-item;
+        list-style-type: circle;
+
+    }
+
+    a {
+        display: block;
+        height: 1.5rem;
+        text-align: center;
+        font-family: 'Bungee', cursive;
+        background: linear-gradient(to bottom right, rgb(50, 55, 70), rgb(2, 3, 12));
+        color: map-get($colors , greenACAP);
+        border-radius: 5px;
+    }
+
+    button {
+        display: block;
+        height: 1.5rem;
+        text-align: center;
+        font-family: 'Bungee', cursive;
+        background: linear-gradient(to bottom right, rgb(50, 55, 70), rgb(2, 3, 12));
+        color: map-get($colors , greenACAP);
+        border-radius: 5px;
+        // width: 100px;
+    }
+
+}
+
+/* Carrito */
+
+
+.carrito {
+    list-style: none;
+    display: flex;
+    text-align: end;
+    margin-right: 1rem;
+    justify-content: end;
+
+    label {
+        display: none;
+    }
+
+    input {
+        width: 2rem;
+    }
+
+    button {
+        display: block;
+        height: 1.5rem;
+        text-align: center;
+        font-family: 'Bungee', cursive;
+        background: linear-gradient(to bottom right, rgb(50, 55, 70), rgb(2, 3, 12));
+        color: map-get($colors , greenACAP);
+        border-radius: 5px;
+        // width: 100px;
+    }
+}
+
+
+
+.modal-container {
+    background-color: rgba(0, 0, 0, 0.3);
+
+    position: fixed;
+    pointer-events: none;
+    opacity: 0;
+    // top: 0;
+    // left: 0;
+    height: 50vh;
+    width: 50vw;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+}
+
+.show {
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    // align-items: center;
+    text-align: center;
+    // background: #fff;
+    width: 60vw;
+    max-width: 100%;
+    padding: 30px 50px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+    font-family: 'Raleway', cursive;
+    font-weight: 300;
+    background: linear-gradient(to bottom right, rgb(50, 55, 70), rgb(2, 3, 12));
+    color: map-get($colors , greenACAP);
+    color: white;
+    border-radius: 5px;
+
+    h2 {
+        font-family: 'Bungee', cursive;
+        color: map-get($colors , greenACAP);
+    }
+
+    button {
+        display: block;
+        height: 1.5rem;
+        text-align: center;
+        font-family: 'Bungee', cursive;
+        background: linear-gradient(to bottom right, rgb(50, 55, 70), rgb(2, 3, 12));
+        color: map-get($colors , greenACAP);
+        border-radius: 5px;
+        // width: 100px;
+    }
+
+    &__body {
+
+        display: flex;
+        flex-direction: column;
+
+        .lineaCarrito {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+
+    .totalCarrito {
+        font-weight: 600;
+
+    }
+
+}
+
+
+
+
+/* MEDIA WORKSHOP */
+
+@media screen and (max-width: 720px) {
+
+    .workshops__list {
+        grid-template-columns: 1fr;
+    }
+
+    .workshop {
+        width: 100vw;
+
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+
+    .workshops__list {
+        /* grid-template-columns: 1fr; */
+        justify-content: normal;
+        padding: 0%;
+    }
+
+    .workshop {
+
+        width: 100vw;
+
+    }
+}

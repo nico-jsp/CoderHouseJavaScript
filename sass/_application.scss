@@ -1,0 +1,88 @@
+/* Application */
+
+.app_view {
+    @include padding-updown(15px, 15px);
+    @include padding-sides(3rem, 3rem);
+    display: flex;
+    color: aliceblue;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+
+    .img-bx {
+        padding: 30px;
+        overflow: hidden;
+    }
+
+
+
+}
+
+
+.bckg-dark {
+    background-color: #323746;
+}
+
+
+
+.waves {
+    margin-top: -4px;
+    margin-bottom: -4px;
+
+}
+
+/* MEDIA APP */
+
+
+@media screen and (max-width: 940px) {
+
+
+    .app_view {
+        flex-direction: column;
+        padding-left: 0rem;
+        padding-right: 0rem;
+    }
+
+    .bg-dark {
+        flex-direction: column-reverse;
+    }
+
+
+
+}
+
+@media screen and (max-width: 720px) {
+
+
+    .app_view {
+        flex-direction: column;
+        padding-left: 0rem;
+        padding-right: 0rem;
+    }
+
+    .bg-dark {
+        flex-direction: column-reverse;
+    }
+
+
+
+}
+
+
+@media screen and (max-width: 480px) {
+
+
+
+    .app_view {
+        flex-direction: column;
+        padding-left: 0rem;
+        padding-right: 0rem;
+    }
+
+    .bckg-dark {
+        flex-direction: column-reverse;
+    }
+
+
+}
