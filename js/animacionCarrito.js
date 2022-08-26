@@ -6,12 +6,18 @@ let cantidadCarritoWeb = 0;
 document.getElementById("carritoWeb").value = cantidadCarritoWeb;
 const btnVerCarrito = document.getElementById('verCarro');
 
+let totalAPagar = 0;
+let carrito = [];
+let carritoWeb = [];
+
 
 let cursosAInscribirse = [];
 if (localStorage.getItem("cursosAInscribirse")) {
 
     cursosAInscribirse = JSON.parse(localStorage.getItem("cursosAInscribirse"));
-    cantidadCarritoWeb = cursosAInscribirse.length;
+    carritoWeb = JSON.parse(localStorage.getItem("cursosAInscribirse"));
+    // cantidadCarritoWeb = cursosAInscribirse.length;
+    cantidadCarritoWeb = carritoWeb.length;
     document.getElementById("carritoWeb").value = cantidadCarritoWeb;
     if (cantidadCarritoWeb > 0) {
 
@@ -24,9 +30,7 @@ if (localStorage.getItem("cursosAInscribirse")) {
 
     }
 }
-let totalAPagar = 0;
-let carrito = [];
-let carritoWeb = [];
+
 
 
 var listaDeCursos = [
@@ -143,7 +147,8 @@ function agregarAlCarrito(nroIngresado) {
 
 // Quitar del carrito
 function quitarDelCarrito(nroIngresado) {
-
+    console.log(cursosAInscribirse);
+    console.log(nroIngresado);
     let posicion = cursosAInscribirse.indexOf(listaDeCursos[nroIngresado - 1]);
     if (posicion != -1) {
         cursosAInscribirse.splice(posicion, 1);
@@ -153,6 +158,7 @@ function quitarDelCarrito(nroIngresado) {
         localStorage.setItem("cursosAInscribirse", JSON.stringify(cursosAInscribirse));
 
     } else {
+        console.log(posicion)
         alert("El curso que se desea borrar no esta en el carrito");
     }
 
@@ -206,8 +212,10 @@ function verCarrito() {
     const botonPagar = document.createElement("button");
     botonPagar.className = "botonPagar";
     botonPagar.innerText = "Finalizar Compra";
+    botonPagar.id = "botonPagar"
     carritoHTML.append(botonPagar);
-    // botonPagar.addEventListener("click", finalizarCompra());
+
+
 }
 
 function finalizarCompra() {
@@ -215,7 +223,8 @@ function finalizarCompra() {
     // Falta finalizar compra!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // for (const curso of cursosAInscribirse) {
     //     quitarDelCarrito(curso.id);
-    // }
+    // // }
+    // cursosAInscribirse = [];
     // localStorage.clear("cursosAInscribirse");
 
 }
@@ -238,6 +247,11 @@ function pressButton(i) {
                       `;
 
     }
+    Swal.fire(
+        "Curso: " + listaDeCursos[i - 1].titulo,
+        "Agregado al carrito",
+        "success"
+    );
 
 };
 
@@ -308,8 +322,11 @@ btnVerCarrito.addEventListener('click', () => {
 
     if (!modalCarrito.classList.contains("show")) {
         verCarrito();
-        modalCarrito.classList.add('show');
+        modalCarrito.classList.add('show');;
     }
+
+    // const btnFinCompra = document.getElementById("botonPagar");
+    // btnFinCompra.addEventListener('onclick', finalizarCompra())
 
 });
 
