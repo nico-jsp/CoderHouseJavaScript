@@ -10,6 +10,14 @@ let totalAPagar = 0;
 let carrito = [];
 let carritoWeb = [];
 
+const btnfinCompra = document.getElementById('finCompra');
+const btnCerrarCarrito = document.getElementById('closeCarrito');
+const modalCarrito = document.getElementById('modal__container');
+const carritoHTML = document.getElementById('modal__body');
+const cursosListados = document.getElementById("workshops__list");
+// renderizarProductos();
+getJSON();
+
 
 let cursosAInscribirse = [];
 if (localStorage.getItem("cursosAInscribirse")) {
@@ -33,107 +41,105 @@ if (localStorage.getItem("cursosAInscribirse")) {
 
 
 
-var listaDeCursos = [
-    {
-        id: 1,
-        titulo: "Aspectos psicológicos en el crossfit I",
-        descripcion: "",
-        caracteristicas: {
-            numEncuentros: 1,
-            horasCatedra: 4,
-            tipoEncuentro: ["Presencial"],
-        },
-        publico: "todos",
-        precio: 50,
-    },
-    {
-        id: 2,
-        titulo: "Aspectos psicológicos en el crossfit II",
-        descripcion: "",
-        caracteristicas: {
-            numEncuentros: 1,
-            horasCatedra: 4,
-            tipoEncuentro: ["Presencial"],
-        },
-        publico: "todos",
-        precio: 80,
-    },
-    {
-        id: 3,
-        titulo: "Liderazgo en el crossfit",
-        descripcion: "",
-        caracteristicas: {
-            numEncuentros: 1,
-            horasCatedra: 5,
-            tipoEncuentro: ["Presencial", "Online"],
-        },
-        publico: "coaches",
-        precio: 90,
-    },
-    {
-        id: 4,
-        titulo: "La comunicacion en el box",
-        descripcion: "",
-        caracteristicas: {
-            numEncuentros: 1,
-            horasCatedra: 2,
-            tipoEncuentro: ["Presencial", "Online"],
-        },
-        publico: "coaches",
-        precio: 90,
-    },
-    {
-        id: 5,
-        titulo: "PSICO-STRENGTH: Entrenamiento mental para atletas",
-        descripcion: "",
-        caracteristicas: {
-            numEncuentros: 4,
-            horasCatedra: 8,
-            tipoEncuentro: ["Presencial"],
-        },
-        publico: "atletas",
-        precio: 90,
-    }
-];
+// var listaDeCursos = [
+//     {
+//         id: 1,
+//         titulo: "Aspectos psicológicos en el crossfit I",
+//         descripcion: "",
+//         caracteristicas: {
+//             numEncuentros: 1,
+//             horasCatedra: 4,
+//             tipoEncuentro: ["Presencial"],
+//         },
+//         publico: "todos",
+//         precio: 50,
+//     },
+//     {
+//         id: 2,
+//         titulo: "Aspectos psicológicos en el crossfit II",
+//         descripcion: "",
+//         caracteristicas: {
+//             numEncuentros: 1,
+//             horasCatedra: 4,
+//             tipoEncuentro: ["Presencial"],
+//         },
+//         publico: "todos",
+//         precio: 80,
+//     },
+//     {
+//         id: 3,
+//         titulo: "Liderazgo en el crossfit",
+//         descripcion: "",
+//         caracteristicas: {
+//             numEncuentros: 1,
+//             horasCatedra: 5,
+//             tipoEncuentro: ["Presencial", "Online"],
+//         },
+//         publico: "coaches",
+//         precio: 90,
+//     },
+//     {
+//         id: 4,
+//         titulo: "La comunicacion en el box",
+//         descripcion: "",
+//         caracteristicas: {
+//             numEncuentros: 1,
+//             horasCatedra: 2,
+//             tipoEncuentro: ["Presencial", "Online"],
+//         },
+//         publico: "coaches",
+//         precio: 90,
+//     },
+//     {
+//         id: 5,
+//         titulo: "PSICO-STRENGTH: Entrenamiento mental para atletas",
+//         descripcion: "",
+//         caracteristicas: {
+//             numEncuentros: 4,
+//             horasCatedra: 8,
+//             tipoEncuentro: ["Presencial"],
+//         },
+//         publico: "atletas",
+//         precio: 90,
+//     }
+// ];
 
 // Funciones
 
-
-//Imprimir lista de cursos
-
-function listarCursos() {
-    let lista = "Cursos:\n";
-    let linea = "";
-    for (const curso of listaDeCursos) {
-        linea = curso.id + "- " + curso.titulo + " - USD " + curso.precio;
-
-        lista = lista + linea + "\n";
-    }
-    return lista;
+//Get JSON de cursos.json
+async function getJSON() {
+    //Definimos la URL
+    const URLJSON = "/json/cursos.json"
+    //Hacemos un Fetch a la URL
+    const resp = await fetch(URLJSON)
+    //Pasamos el JSON a array de objetos
+    const data = await resp.json()
+    //Lo copiamos a nuestra variable
+    listaDeCursos = data;
+    //Renderizamos nuestros productos, en este caso, cursos
+    renderizarProductos();
 }
-
-
 
 // Armar carrito
-function imprimirCarrito() {
-    let i = 0;
-    let items = cursosAInscribirse.length;
+// function imprimirCarrito() {
+//     let i = 0;
+//     let items = cursosAInscribirse.length;
 
 
-    carrito = "";
-    while (i < items) {
+//     carrito = "";
+//     while (i < items) {
 
-        carrito = carrito + "* ";
-        carrito = carrito + " " + cursosAInscribirse[i].id + " - " + cursosAInscribirse[i].titulo;
-        carrito = carrito + "\n";
-        i++;
+//         carrito = carrito + "* ";
+//         carrito = carrito + " " + cursosAInscribirse[i].id + " - " + cursosAInscribirse[i].titulo;
+//         carrito = carrito + "\n";
+//         i++;
 
-    };
+//     };
 
-    carrito = carrito + "\nTotal a pagar: " + totalAPagar;
+//     carrito = carrito + "\nTotal a pagar: " + totalAPagar;
 
 
-}
+// }
 //Agregar al carrito
 function agregarAlCarrito(nroIngresado) {
 
@@ -147,8 +153,8 @@ function agregarAlCarrito(nroIngresado) {
 
 // Quitar del carrito
 function quitarDelCarrito(nroIngresado) {
-    console.log(cursosAInscribirse);
-    console.log(nroIngresado);
+    // console.log(cursosAInscribirse);
+    // console.log(nroIngresado);
     let posicion = cursosAInscribirse.indexOf(listaDeCursos[nroIngresado - 1]);
     if (posicion != -1) {
         cursosAInscribirse.splice(posicion, 1);
@@ -168,27 +174,25 @@ function quitarDelCarrito(nroIngresado) {
 
 // Logica a seguir
 
-let listado = listarCursos();
+// let listado = listarCursos();
 
 
 // inicializamos el carrito
 
 
-
-const btnCerrarCarrito = document.getElementById('closeCarrito');
-const modalCarrito = document.getElementById('modal__container');
-const carritoHTML = document.getElementById('modal__body');
-const cursosListados = document.getElementById("workshops__list");
-renderizarProductos();
+// const btnfinCompra = document.getElementById('finCompra');
+// const btnCerrarCarrito = document.getElementById('closeCarrito');
+// const modalCarrito = document.getElementById('modal__container');
+// const carritoHTML = document.getElementById('modal__body');
+// const cursosListados = document.getElementById("workshops__list");
+// // renderizarProductos();
+// getJSON();
 
 
 // Funciones de botones
 
 function verCarrito() {
-    // imprimirCarrito()
-    // imprimir carrito en la ventana Modal
-    // console.log(cursosAInscribirse);
-    // const carritoHTML = document.getElementById('modal__body');
+
     let total = 0;
     for (const curso of cursosAInscribirse) {
         // document.getElementById("carritoWeb").value = cantidadCarritoWeb;
@@ -209,27 +213,14 @@ function verCarrito() {
     totalCarrito.innerHTML = `Total a Pagar: USD${total}`;
 
     carritoHTML.append(totalCarrito);
-    const botonPagar = document.createElement("button");
-    botonPagar.className = "botonPagar";
-    botonPagar.innerText = "Finalizar Compra";
-    botonPagar.id = "botonPagar"
-    carritoHTML.append(botonPagar);
+    // const botonPagar = document.createElement("button");
+    // botonPagar.className = "botonPagar";
+    // botonPagar.innerText = "Finalizar Compra";
+    // botonPagar.id = "botonPagar"
+    // carritoHTML.append(botonPagar);
 
 
 }
-
-function finalizarCompra() {
-
-    // Falta finalizar compra!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // for (const curso of cursosAInscribirse) {
-    //     quitarDelCarrito(curso.id);
-    // // }
-    // cursosAInscribirse = [];
-    // localStorage.clear("cursosAInscribirse");
-
-}
-
-
 
 function pressButton(i) {
     agregarAlCarrito(i);
@@ -238,7 +229,6 @@ function pressButton(i) {
     cantidadCarritoWeb += 1;
     document.getElementById("carritoWeb").value = cantidadCarritoWeb;
     if (cantidadCarritoWeb > 0) {
-        console.log(btnVerCarrito.innerHTML)
         btnVerCarrito.innerHTML = `
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cup-hot-fill" viewBox="0 0 16 16">
                       <path fill-rule="evenodd" d="M.5 6a.5.5 0 0 0-.488.608l1.652 7.434A2.5 2.5 0 0 0 4.104 16h5.792a2.5 2.5 0 0 0 2.44-1.958l.131-.59a3 3 0 0 0 1.3-5.854l.221-.99A.5.5 0 0 0 13.5 6H.5ZM13 12.5a2.01 2.01 0 0 1-.316-.025l.867-3.898A2.001 2.001 0 0 1 13 12.5Z"/>
@@ -257,13 +247,13 @@ function pressButton(i) {
 
 function removeCurso(i) {
     quitarDelCarrito(i);
-    imprimirCarrito();
+    // imprimirCarrito();
 
 
 }
 function removeCursoDeCarrito(i) {
     quitarDelCarrito(i);
-    imprimirCarrito();
+    // imprimirCarrito();
     carritoHTML.innerHTML = "";
     verCarrito();
     if (cantidadCarritoWeb == 0) {
@@ -336,6 +326,34 @@ btnCerrarCarrito.addEventListener('click', () => {
 
 });
 
+btnfinCompra.addEventListener('click', () => {
+    cursosAInscribirse = [];
+    localStorage.clear("cursosAInscribirse");
+    modalCarrito.classList.remove('show');
+    carritoHTML.innerHTML = "";
+    cantidadCarritoWeb = 0;
+    document.getElementById("carritoWeb").value = cantidadCarritoWeb;
+    btnVerCarrito.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cup-fill" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M.11 3.187A.5.5 0 0 1 .5 3h13a.5.5 0 0 1 .488.608l-.22.991a3.001 3.001 0 0 1-1.3 5.854l-.132.59A2.5 2.5 0 0 1 9.896 13H4.104a2.5 2.5 0 0 1-2.44-1.958L.012 3.608a.5.5 0 0 1 .098-.42Zm12.574 6.288a2 2 0 0 0 .866-3.899l-.866 3.9Z"/>
+      </svg>`;
+
+    Swal.fire(
+        "Ud ha realizado una compra",
+        "A disfrutar de los cursos!!!",
+        "success"
+    );
+})
+
+function finalizarCompra() {
+
+    // Falta finalizar compra!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // for (const curso of cursosAInscribirse) {
+    //     quitarDelCarrito(curso.id);
+    // // }
+    // cursosAInscribirse = [];
+    // localStorage.clear("cursosAInscribirse");
+
+}
 
 
 
