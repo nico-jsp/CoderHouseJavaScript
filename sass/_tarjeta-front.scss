@@ -1,0 +1,81 @@
+//Estilo general de la tarjeta
+//Tarjeta lado delantero
+.tarjeta {
+    width: 100%;
+    max-width: 550px;
+    position: relative;
+    color: #fff;
+    transition: .3s ease all;
+    //Rotacion, pero que quede fija
+    transform: rotateX(0deg);
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    cursor: pointer;
+    z-index: 2;
+    text-align: left;
+}
+
+.tarjeta.active {
+    transform: rotateY(180deg);
+}
+
+.tarjeta>div {
+    padding: 30px;
+    border-radius: 15px;
+    min-height: 315px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 10px 10px 0 rgba(90, 116, 148, 0.3);
+}
+
+.tarjeta .delantera {
+    width: 100%;
+    background: url("../assets/img/empty\ background2.png");
+    background-size: cover;
+
+}
+
+.delantera .logo-marca {
+    text-align: right;
+    min-height: 50px;
+
+}
+
+.delantera .logo-marca .img-card {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    max-width: 80px;
+}
+
+.delantera .chip {
+    width: 100%;
+    max-width: 50px;
+    // margin-bottom: 20px;
+}
+
+.delantera .grupo .label {
+    font-size: 16px;
+    color: grey;
+    margin-bottom: 5px;
+}
+
+.delantera .grupo .numero {
+    color: map-get($colors , greenACAP);
+    font-size: 22px;
+    text-transform: uppercase;
+}
+
+.delantera .grupo .nombre,
+.delantera .grupo .expirationDate {
+    color: aliceblue;
+    font-size: 22px;
+    text-transform: uppercase;
+}
+
+.delantera .flexbox {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}

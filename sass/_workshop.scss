@@ -187,3 +187,16 @@
 
     }
 }
+
+
+// Contenedor Forma de Pago
+.contenedor-tarjeta {
+    width: 90%;
+    max-width: 1000px;
+    padding: 40px 20px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}

@@ -1,0 +1,73 @@
+//Tarjeta lado trasero
+
+.trasera {
+    width: 100%;
+    background: url("../assets/logo/2.png");
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+}
+
+.trasera .barra-magnetica {
+    height: 40px;
+    background: map-get($colors, greenACAP);
+    width: 100%;
+    position: absolute;
+    top: 30px;
+    left: 0;
+
+}
+
+.trasera .datos {
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.trasera .datos p {
+    margin-bottom: 5px;
+}
+
+.trasera .datos #firma {
+    width: 70%;
+}
+
+.trasera .datos #firma .firma {
+    height: 40px;
+    background: repeating-linear-gradient(rgb(50, 55, 70) 0, rgb(50, 55, 70) 5px, rgb(2, 3, 12) 5px, rgb(2, 3, 12) 10px);
+
+}
+
+.trasera .datos #firma .firma p {
+    line-height: 40px;
+    font-family: 'Liu Jian Mao Cao', cursive;
+    color: map-get($colors, greenACAP);
+    font-size: 30px;
+    padding: 0 10px;
+    text-transform: capitalize;
+}
+
+.trasera .datos #ccv {
+    width: 20%;
+}
+
+.trasera .datos #ccv .ccv {
+    background: #fff;
+    height: 40px;
+    color: black;
+    padding: 10px;
+    text-align: center;
+}
+
+.trasera .leyenda {
+    font-size: 9px;
+    margin-top: 50px;
+    line-height: 24px;
+}
+
+.trasera .bank-link {
+    font-size: 14px;
+    color: #fff;
+}
